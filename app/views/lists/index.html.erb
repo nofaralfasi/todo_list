@@ -2,8 +2,19 @@
 
 <h1>Lists:</h1>
 
-<% @lists.each do |list| %>
-  <p><%= link_to(list.title, list_path(list)) %></p>
-<% end %>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Action</th>
+  </tr>
 
+  <% @lists.each do |list| %>
+    <tr>
+      <th><%= list.title %></th>
+      <th><%= link_to('Show', list_path(list)) %></th>
+      <th><%= link_to('Edit', edit_list_path(list)) %></th>
+    </tr>
+
+  <% end %>
+</table>
 
