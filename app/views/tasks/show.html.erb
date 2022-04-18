@@ -1,6 +1,4 @@
 <div class="container">
-  <p><%= link_to 'back to list', list_path(@list) %></p>
-
   <h1><%= @task.title %></h1><br/>
 
   <table class="table table-bordered">
@@ -17,7 +15,7 @@
       <td><%= @task.due_date %></td>
       <td><%= @task.priority %></td>
       <td><%= @task.status ? 'Done' : 'To Do' %></td>
-      <td><%= @task.label_id %></td>
+      <td><%= @label ? @label.title : 'None' %></td>
     </tr>
     </tbody>
   </table>

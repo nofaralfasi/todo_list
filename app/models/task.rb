@@ -1,6 +1,6 @@
 class Task < ApplicationRecord
   belongs_to :list
-  has_many :labels
+  belongs_to :labels, optional: true
 
   validates :title, presence: true, length: { minimum: 2 }
 end

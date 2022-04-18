@@ -1,6 +1,4 @@
 <div class="container">
-  <p><%= link_to 'back to list', list_path(@list) %></p>
-
   <h1>Edit Task</h1>
 
   <%= form_for([@task.list, @task], data: { turbo: false }) do |f| %>

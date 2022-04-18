@@ -38,3 +38,5 @@
 /config/database.yml
 
 /Gemfile.lock
+
+/.idea/todo_list.iml
