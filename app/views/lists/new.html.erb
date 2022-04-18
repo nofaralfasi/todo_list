@@ -1,0 +1,14 @@
+<%= link_to('Back to List', lists_path) %>
+
+<h1>Create List</h1>
+
+<div class="lists new">
+<%= form_for(@list, :url => lists_path, :method => 'post') do |f| %>
+
+  <%= render(:partial => 'form', :locals => {:f => f}) %>
+
+  <div class="form-buttons">
+    <%= f.submit('Create List') %>
+  </div>
+<% end %>
+</div>
