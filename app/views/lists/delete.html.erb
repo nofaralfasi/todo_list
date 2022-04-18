@@ -1,0 +1,13 @@
+<%= link_to('back to list', lists_path) %>
+
+<h2>Delete List</h2>
+
+<%= form_for(@list, :method => 'delete') do |f| %>
+  <p>Are you sure you want to permanently delete this list?</p>
+
+  <p><%= @list.title %></p>
+
+  <div class="list-buttons">
+    <%= f.submit('Delete List') %>
+  </div>
+<% end %>
