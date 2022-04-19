@@ -1,0 +1,20 @@
+<%= error_message_for(f.object) %>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th><%= f.text_field(:title) %></th>
+  </tr>
+  <tr>
+    <th>Due Date</th>
+    <th><%= f.text_field(:due_date) %></th>
+  </tr>
+  <tr>
+    <th>Priority</th>
+    <th><%= f.text_field(:priority) %></th>
+  </tr>
+  <tr>
+    <th>Status</th>
+    <th><%= f.text_field(:status) %></th>
+  </tr>
+</table>

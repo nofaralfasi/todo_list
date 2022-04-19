@@ -1,3 +1,23 @@
 <%= link_to('Back to list', lists_path) %>
 
 <h1><%= @list.title %></h1>
+
+<% unless @list.tasks.empty? %>
+  <table>
+    <tr>
+      <th>Title</th>
+      <th>Action</th>
+    </tr>
+    <% @list.tasks.each do |task| %>
+      <tr>
+        <th><%= task.title %></th>
+        <th><%= link_to('Show', task_path(task)) %></th>
+        <th><%= link_to('Edit', edit_task_path(task)) %></th>
+        <th><%= link_to('Delete', delete_task_path(task)) %></th>
+      </tr>
+    <% end %>
+  </table>
+
+<% end %>
+
+<p><%= link_to('Add new task', new_task_path) %></p>

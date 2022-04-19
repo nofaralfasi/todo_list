@@ -1,0 +1,13 @@
+<%= link_to('back to list', list_path(cookies[:list_id])) %>
+
+<h1>New Task</h1>
+
+<%= form_for(@task, :method => 'post', data: { turbo: false }) do |f| %>
+
+  <%= render(:partial => 'form', :locals => { :f => f }) %>
+
+  <div class="task-buttons">
+    <%= f.submit('Create Task') %>
+  </div>
+
+<% end %>
