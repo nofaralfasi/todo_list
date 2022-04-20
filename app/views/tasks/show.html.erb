@@ -1,0 +1,18 @@
+<%= link_to('back to list', list_path(cookies[:list_id])) %>
+
+<h2><%= @task.title %></h2>
+
+<table>
+  <tr>
+    <th>Due Date</th>
+    <th>Priority</th>
+    <th>Status</th>
+    <th>Label</th>
+  </tr>
+  <tr>
+    <td><%= @task.due_date %></td>
+    <td><%= @task.priority %></td>
+    <td><%= @task.status ? 'Done' : 'To Do' %></td>
+    <td><%= @task.label_id %></td>
+  </tr>
+</table>
