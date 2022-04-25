@@ -1,5 +1,11 @@
 <p><%= link_to('Add a new list', new_list_path, :class => 'action new') %></p>
 
+<% flash.each do |type, msg| %>
+  <script type="text/javascript" charset="utf-8">
+      alert("<%= msg %>");
+  </script>
+<% end %>
+
 <h1>Lists:</h1>
 
 <table>
@@ -18,4 +24,3 @@
 
   <% end %>
 </table>
-
