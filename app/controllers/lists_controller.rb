@@ -5,9 +5,6 @@ class ListsController < ApplicationController
     @lists = List.all
   end
 
-  def show
-  end
-
   def new
     @list = List.new
   end
@@ -22,18 +19,12 @@ class ListsController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def update
     if @list.update(list_params)
       redirect_to(list_path(@list))
     else
       render('edit')
     end
-  end
-
-  def delete
   end
 
   def destroy
