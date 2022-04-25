@@ -13,30 +13,30 @@ class ListsController < ApplicationController
     @list = List.new(list_params)
 
     if @list.save
-      redirect_to(list_path(@list))
+      redirect_to list_path(@list)
     else
-      render('new')
+      render :new, status: :unprocessable_entity
     end
   end
 
   def update
     if @list.update(list_params)
-      redirect_to(list_path(@list))
+      redirect_to list_path(@list)
     else
-      render('edit')
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     @list.destroy
-    redirect_to(lists_path)
+    redirect_to lists_path
   end
 
   def find_list
     @list = List.find_by(id: params[:id])
 
     if @list.blank?
-      redirect_to(lists_path, notice: "List #{params[:id]} was not found.")
+      redirect_to lists_path, notice: "List #{params[:id]} was not found."
     end
   end
 

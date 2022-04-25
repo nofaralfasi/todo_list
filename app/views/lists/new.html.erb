@@ -5,6 +5,10 @@
 <div class="lists new">
 <%= form_for(@list, :url => lists_path, :method => 'post') do |f| %>
 
+    <% @list.errors.full_messages_for(:title).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+
   <%= render(:partial => 'form', :locals => {:f => f}) %>
 
   <div class="form-buttons">
