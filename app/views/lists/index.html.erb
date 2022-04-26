@@ -13,7 +13,7 @@
       <th><%= list.title %></th>
       <th><%= link_to('Show', list_path(list)) %></th>
       <th><%= link_to('Edit', edit_list_path(list)) %></th>
-      <th><%= link_to('Delete', delete_list_path(list)) %></th>
+      <th><%= link_to "Delete", list, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></th>
     </tr>
 
   <% end %>
