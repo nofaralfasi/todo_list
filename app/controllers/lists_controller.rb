@@ -1,8 +1,12 @@
 class ListsController < ApplicationController
-  before_action :find_list, only: [:show, :edit, :update, :destroy]
+  before_action :set_list, only: [:show, :edit, :update, :destroy]
 
   def index
     @lists = List.all
+  end
+
+  def show
+    cookies[:list_id] = @list.id
   end
 
   def new
@@ -32,15 +36,15 @@ class ListsController < ApplicationController
     redirect_to lists_path, status: :see_other
   end
 
-  def find_list
+  private
+
+  def set_list
     @list = List.find_by(id: params[:id])
 
     if @list.blank?
       redirect_to lists_path, notice: "List #{params[:id]} was not found."
     end
   end
-
-  private
 
   def list_params
     params.require(:list).permit(:title)

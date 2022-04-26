@@ -1,49 +1,53 @@
 class TasksController < ApplicationController
-  def index
-  end
-
-  def show
-    @task = Task.find(params[:id])
-  end
+  before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def new
     @task = Task.new
-    @task.list_id = cookies[:list_id]
+    set_list
   end
 
   def create
     @task = Task.new(task_params)
-    @task.list_id = cookies[:list_id]
+    set_list
     @task.label_id = 0
     if @task.save
-      # redirect_to(lists_path)
-      redirect_to(list_path(cookies[:list_id]))
+      redirect_to list_path(@list)
     else
-      render('new')
+      render :new, status: :unprocessable_entity
     end
-  end
-
-  def edit
-    @task = Task.find(params[:id])
   end
 
   def update
-    @task = Task.find(params[:id])
     if @task.update(task_params)
-      redirect_to(task_path(@task))
+      redirect_to task_path(@task)
     else
-      render('edit')
+      render :edit, status: :unprocessable_entity
     end
   end
 
-  def delete
-    @task = Task.find(params[:id])
+  def destroy
+    @task.destroy
+    redirect_to list_path(cookies[:list_id]), status: :see_other
   end
 
-  def destroy
-    @task = Task.find(params[:id])
-    @task.destroy
-    redirect_to(list_path(cookies[:list_id]))
+  private
+
+  def set_task
+    @task = Task.find_by(id: params[:id])
+
+    if @task.blank?
+      redirect_to list_path(cookies[:list_id]), notice: "Task #{params[:id]} was not found."
+    end
+  end
+
+  def set_list
+    @list = List.find_by(id: cookies[:list_id])
+
+    if @list.blank?
+      redirect_to lists_path, notice: "List #{cookies[:list_id]} was not found."
+    else
+      @task.list_id = @list.id
+    end
   end
 
   def task_params

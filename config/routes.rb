@@ -3,11 +3,12 @@ Rails.application.routes.draw do
 
   resources :lists
 
-  resources :tasks do
-    member do
-      get :delete
-    end
-  end
+  resources :tasks
+  # do
+  #   member do
+  #     get :delete
+  #   end
+  # end
 
   resources :labels do
     member do
