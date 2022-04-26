@@ -1,0 +1,13 @@
+<%= link_to('back to list', lists_path) %>
+
+<h2>Update List</h2>
+
+<%= form_for(@list) do |f| %>
+
+  <%= render(:partial => 'form', :locals => { :f => f }) %>
+
+  <div class="list-buttons">
+    <%= f.submit('Update List') %>
+  </div>
+
+<% end %>

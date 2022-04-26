@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
-  get 'lists/index'
-  get 'labels/index'
-  get 'tasks/index'
+  root 'lists#index'
 
-  resources :lists do
+  resources :lists
+
+  resources :tasks do
     member do
       get :delete
     end
   end
 
-  resources :tasks do
+  resources :labels do
     member do
       get :delete
     end
