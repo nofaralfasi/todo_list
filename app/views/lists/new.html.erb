@@ -1,18 +1,19 @@
-<%= link_to('back to list', lists_path) %>
+<div class="container">
+  <p><%= link_to 'back to list', lists_path %></p>
 
-<h1>Create List</h1>
+  <h1>Create List</h1>
 
-<div class="lists new">
-<%= form_for(@list, :url => lists_path, :method => 'post') do |f| %>
+  <div class="lists new">
+    <%= form_for(@list, :url => lists_path, :method => 'post') do |f| %>
 
-    <% @list.errors.full_messages_for(:title).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
+      <% @list.errors.full_messages_for(:title).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
 
-  <%= render(:partial => 'form', :locals => {:f => f}) %>
+      <%= render(:partial => 'form', :locals => { :f => f }) %>
 
-  <div class="form-buttons">
-    <%= f.submit('Create List') %>
+      <%= f.submit('Create List', class: "btn btn-primary") %>
+  <% end %>
   </div>
-<% end %>
+
 </div>

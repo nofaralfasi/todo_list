@@ -1,12 +1,8 @@
 class ListsController < ApplicationController
-  before_action :set_list, only: [:show, :edit, :update, :destroy]
+  before_action :get_list, only: [:show, :edit, :update, :destroy]
 
   def index
     @lists = List.all
-  end
-
-  def show
-    cookies[:list_id] = @list.id
   end
 
   def new
@@ -17,7 +13,7 @@ class ListsController < ApplicationController
     @list = List.new(list_params)
 
     if @list.save
-      redirect_to list_path(@list)
+      redirect_to list_path(@list), notice: "List `#{@list.title}` was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -25,7 +21,7 @@ class ListsController < ApplicationController
 
   def update
     if @list.update(list_params)
-      redirect_to list_path(@list)
+      redirect_to list_path(@list), notice: "List `#{@list.title}` was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -33,12 +29,12 @@ class ListsController < ApplicationController
 
   def destroy
     @list.destroy
-    redirect_to lists_path, status: :see_other
+    redirect_to lists_path, status: :see_other, notice: "List `#{@list.title}` was successfully deleted."
   end
 
   private
 
-  def set_list
+  def get_list
     @list = List.find_by(id: params[:id])
 
     if @list.blank?

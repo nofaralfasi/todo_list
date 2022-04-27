@@ -1,24 +1,26 @@
 <%= error_message_for(f.object) %>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th><%= f.text_field(:title) %></th>
-  </tr>
-  <tr>
-    <th>Due Date</th>
-    <th><%= f.text_field(:due_date) %></th>
-  </tr>
-  <tr>
-    <th>Priority</th>
-    <th><%= f.text_field(:priority) %></th>
-  </tr>
-  <tr>
-    <th>Status</th>
-    <th><%= f.text_field(:status) %></th>
-  </tr>
-  <tr>
-    <th>Label ID</th>
-    <th><%= f.text_field(:label_id) %></th>
-  </tr>
-</table>
+<div class="form-group">
+  <%= f.label :title %>
+  <%= f.text_field :title, class: "form-control", placeholder: "Enter title" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :due_date %>
+  <%= f.text_field :due_date, class: "form-control", placeholder: "Enter due date" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :priority %>
+  <%= f.text_field :priority, class: "form-control", placeholder: "Enter priority" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :status %>
+  <%= f.text_field :status, class: "form-control", placeholder: "Enter status" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :label_id %>
+  <%= f.text_field :label_id, class: "form-control", placeholder: "Enter label id" %>
+</div>
