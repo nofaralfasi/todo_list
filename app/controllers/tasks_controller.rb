@@ -2,8 +2,7 @@ class TasksController < ApplicationController
   before_action :get_list
   before_action :get_task, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @tasks = @list.tasks
+  def show
   end
 
   def new

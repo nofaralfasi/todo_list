@@ -16,8 +16,11 @@
 </div>
 
 <div class="form-group">
-  <%= f.label :status %>
-  <%= f.text_field :status, class: "form-control", placeholder: "Enter status" %>
+  <%= f.label :status %><br/>
+  <%= f.radio_button :status, false, :checked => true %>
+  <%= f.label :status, "To Do", :value => "false" %> &nbsp;
+  <%= f.radio_button :status, true %>
+  <%= f.label :status, "Done", :value => "true" %>
 </div>
 
 <div class="form-group">

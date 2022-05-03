@@ -28,7 +28,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_18_110641) do
     t.bigint "label_id"
     t.string "title"
     t.string "due_date"
-    t.integer "priority"
+    t.string "priority"
     t.boolean "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
