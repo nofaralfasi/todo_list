@@ -16,14 +16,14 @@
 
   <body>
 
-  <div>
-    <% if notice %>
+  <% if notice %>
+    <div class="notice">
       <%= render 'layouts/alerts' %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 
   <br/>
-    <%= yield %>
+  <%= yield %>
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->

@@ -1,3 +1,30 @@
-<%= link_to('Back to list', lists_path) %>
+<div class="container">
+  <p><%= link_to 'back to list', lists_path %></p>
 
-<h1><%= @list.title %></h1>
+  <h2><%= @list.title %></h2>
+
+  <% unless @list.tasks.empty? %>
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th>Title</th>
+        <th colspan="3">Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @list.tasks.each do |task| %>
+        <% if task.persisted? %>
+          <tr>
+            <td><%= task.title %></td>
+            <td><%= link_to 'Show', list_task_path(task.list, task) %></td>
+            <td><%= link_to 'Edit', edit_list_task_path(task.list, task) %></td>
+            <td><%= link_to 'Delete', [task.list, task], method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></td>
+          </tr>
+        <% end %>
+      <% end %>
+      </tbody>
+    </table>
+  <% end %>
+  <br/>
+  <p><%= link_to 'Add new task', new_list_task_path(@list) %></p>
+</div>

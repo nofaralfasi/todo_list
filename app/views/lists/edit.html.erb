@@ -1,13 +1,12 @@
-<%= link_to('back to list', lists_path) %>
+<div class="container">
+  <p><%= link_to 'back to list', lists_path %></p>
 
-<h2>Update List</h2>
+  <h2>Update List</h2>
 
-<%= form_for(@list) do |f| %>
+  <%= form_for(@list) do |f| %>
 
-  <%= render(:partial => 'form', :locals => { :f => f }) %>
+    <%= render(:partial => 'form', :locals => { :f => f }) %>
 
-  <div class="list-buttons">
-    <%= f.submit('Update List') %>
-  </div>
-
-<% end %>
+    <%= f.submit('Update List', class: "btn btn-primary") %>
+  <% end %>
+</div>
