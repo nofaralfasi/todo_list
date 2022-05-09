@@ -28,8 +28,11 @@ class ListsController < ApplicationController
   end
 
   def destroy
-    @list.destroy
-    redirect_to lists_path, status: :see_other, notice: "List `#{@list.title}` was successfully deleted."
+    if @list.destroy
+      redirect_to lists_path, status: :see_other, notice: "List `#{@list.title}` was successfully deleted."
+    else
+      redirect_to lists_path, notice: "List `#{@list.title}` could not be deleted."
+    end
   end
 
   private

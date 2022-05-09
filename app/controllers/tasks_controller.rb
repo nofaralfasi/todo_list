@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   before_action :get_list
   before_action :get_task, only: [:show, :edit, :update, :destroy]
+  before_action :get_labels, only: [:new, :edit]
 
   def show
     if @task.label_id
@@ -10,7 +11,6 @@ class TasksController < ApplicationController
 
   def new
     @task = @list.tasks.build
-    @labels = Label.all
   end
 
   def create
@@ -19,30 +19,33 @@ class TasksController < ApplicationController
     if @task.save
       redirect_to @task.list, notice: "Task `#{@task.title}` was successfully created."
     else
-      @labels = Label.all
+      get_labels
       render :new, status: :unprocessable_entity
     end
-  end
-
-  def edit
-    @labels = Label.all
   end
 
   def update
     if @task.update(task_params)
       redirect_to @task.list, notice: "Task `#{@task.title}` was successfully updated."
     else
-      @labels = Label.all
+      get_labels
       render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
-    @task.destroy
-    redirect_to lists_path, notice: "Task `#{@task.title}` was successfully deleted."
+    if @task.destroy
+      redirect_to lists_path, notice: "Task `#{@task.title}` was successfully deleted."
+    else
+      redirect_to lists_path, notice: "Task `#{@task.title}` could not be deleted."
+    end
   end
 
   private
+
+  def get_labels
+    @labels = Label.all
+  end
 
   def get_task
     @task = Task.find_by(id: params[:id])

@@ -1,5 +1,4 @@
 class LabelsController < ApplicationController
-  before_action :get_label, only: [:destroy]
 
   def index
     @labels = Label.all
@@ -19,20 +18,20 @@ class LabelsController < ApplicationController
   end
 
   def destroy
-    @label.destroy
-    redirect_to root_path, notice: "Label `#{@label.title}` was successfully deleted."
-  end
-
-
-  private
-
-  def get_label
     @label = Label.find_by(id: params[:id])
 
     if @label.blank?
       redirect_to root_path, notice: "Label #{params[:id]} was not found."
     end
+
+    if @label.destroy
+      redirect_to root_path, notice: "Label `#{@label.title}` was successfully deleted."
+    else
+      redirect_to root_path, notice: "Label `#{@label.title}` could not be deleted."
+    end
   end
+
+  private
 
   def label_params
     params.require(:label).permit(:title)

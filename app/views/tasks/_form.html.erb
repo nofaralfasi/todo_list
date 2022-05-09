@@ -26,7 +26,7 @@
 <div class="form-group">
   <%= f.label :label_id %><br/>
   <% unless @labels.empty? %>
-    <%= f.select(:label_id, @labels.map { |l| [l.title, l.id] }) %>
+    <%= f.select(:label_id, @labels.map { |l| [l.title, l.id] }, {}, { class: 'form-control' }) %>
   <% else %>
     <%= link_to('Create new label', new_label_path) %>
   <% end %>
