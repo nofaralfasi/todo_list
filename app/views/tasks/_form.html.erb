@@ -24,6 +24,10 @@
 </div>
 
 <div class="form-group">
-  <%= f.label :label_id %>
-  <%= f.text_field :label_id, class: "form-control", placeholder: "Enter label id" %>
+  <%= f.label :label_id %><br/>
+  <% if @labels.any? %>
+    <%= f.select(:label_id, @labels.map { |l| [l.title, l.id] }, { include_blank: 'No Label' }, { class: 'form-control' }) %>
+  <% else %>
+    <%= link_to('Create new label', new_label_path) %>
+  <% end %>
 </div>

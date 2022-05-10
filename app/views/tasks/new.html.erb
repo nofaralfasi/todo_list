@@ -1,6 +1,4 @@
 <div class="container">
-  <p><%= link_to 'back to list', list_path(@list) %></p>
-
   <h1>New Task</h1>
 
   <%= form_for([@task.list, @task], :method => 'post', data: { turbo: false }) do |f| %>

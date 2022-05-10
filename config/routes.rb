@@ -5,10 +5,6 @@ Rails.application.routes.draw do
     resources :tasks
   end
 
-  resources :labels do
-    member do
-      get :delete
-    end
-  end
+  resources :labels
 
 end

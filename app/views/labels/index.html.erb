@@ -1,2 +1,28 @@
-<h1>Labels#index</h1>
-<p>Find me in app/views/labels/index.html.erb</p>
+<div class="container">
+  <h1>Labels</h1><br/>
+
+  <% if @labels.any? %>
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th>Title</th>
+        <th colspan="2">Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @labels.each do |label| %>
+        <tr>
+          <td><%= label.title %></td>
+          <td><%= link_to 'Edit', edit_label_path(label) %></td>
+          <td><%= link_to "Delete", label, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  <% end %>
+
+  <div class="my-2 my-lg-0">
+    <%= link_to 'Create new label', new_label_path, class: 'action new btn btn-outline-primary my-2 my-sm-0' %>
+  </div>
+
+</div>
