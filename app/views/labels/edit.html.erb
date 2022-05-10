@@ -1,0 +1,10 @@
+<div class="container">
+  <h2>Update Label</h2>
+
+  <%= form_for(@label) do |f| %>
+
+    <%= render(:partial => 'form', :locals => { :f => f }) %>
+
+    <%= f.submit('Update Label', class: "btn btn-primary") %>
+  <% end %>
+</div>

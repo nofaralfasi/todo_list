@@ -1,7 +1,7 @@
 <div class="container">
   <h1>To-Do Lists:</h1><br/>
 
-  <% unless @lists.empty? %>
+  <% if @lists.any? %>
     <table class="table table-bordered">
       <thead>
       <tr>
@@ -23,6 +23,6 @@
   <% end %>
 
   <div class="my-2 my-lg-0">
-    <%= link_to 'Create new list', new_list_path, :class => 'action new btn btn-outline-primary my-2 my-sm-0' %>
+    <%= link_to 'Create new list', new_list_path, class: 'action new btn btn-outline-primary my-2 my-sm-0' %>
   </div>
 </div>

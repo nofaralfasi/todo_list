@@ -3,12 +3,6 @@ class TasksController < ApplicationController
   before_action :get_task, only: [:show, :edit, :update, :destroy]
   before_action :get_labels, only: [:new, :edit]
 
-  def show
-    if @task.label_id
-      @label = Label.find_by(id: @task.label_id)
-    end
-  end
-
   def new
     @task = @list.tasks.build
   end

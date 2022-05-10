@@ -14,8 +14,8 @@
     <tr>
       <td><%= @task.due_date %></td>
       <td><%= @task.priority %></td>
-      <td><%= @task.status ? 'Done' : 'To Do' %></td>
-      <td><%= @label ? @label.title : 'None' %></td>
+      <td><%= task_status(@task) %></td>
+      <td><%= task_label(@task) %></td>
     </tr>
     </tbody>
   </table>
