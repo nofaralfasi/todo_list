@@ -1,33 +1,33 @@
 <%= error_message_for(f.object) %>
 
-<div class="form-group">
+<div class='form-group'>
   <%= f.label :title %>
-  <%= f.text_field :title, class: "form-control", placeholder: "Enter title" %>
+  <%= f.text_field :title, class: 'form-control', placeholder: 'Enter title' %>
 </div>
 
-<div class="form-group">
+<div class='form-group'>
   <%= f.label :due_date %><br/>
-  <%= f.datetime_select(:due_date, { ampm: true, order: [:day, :month, :year], start_year: Date.today.year }, { class: 'form-control date-select' }) %>
+  <%= f.datetime_select :due_date, { ampm: true, order: [:day, :month, :year], start_year: Date.today.year }, { class: 'form-control date-select' } %>
 </div>
 
-<div class="form-group">
+<div class='form-group'>
   <%= f.label :priority %>
-  <%= f.select(:priority, 1..3, {}, { class: 'form-control' }) %>
+  <%= f.select :priority, 1..3, {}, { class: 'form-control' } %>
 </div>
 
-<div class="form-group">
+<div class='form-group'>
   <%= f.label :status %><br/>
-  <%= f.radio_button :status, false, :checked => true %>
-  <%= f.label :status, "To Do", :value => "false" %> &nbsp;
+  <%= f.radio_button :status, false, checked: true %>
+  <%= f.label :status, 'To Do', value: 'false' %> &nbsp;
   <%= f.radio_button :status, true %>
-  <%= f.label :status, "Done", :value => "true" %>
+  <%= f.label :status, 'Done', value: 'true' %>
 </div>
 
-<div class="form-group">
+<div class='form-group'>
   <%= f.label :label_id %>
   <% if @labels.any? %>
-    <%= f.select(:label_id, @labels.map { |l| [l.title, l.id] }, { include_blank: 'No Label' }, { class: 'form-control' }) %>
+    <%= f.select :label_id, @labels.map { |l| [l.title, l.id] }, { include_blank: 'No Label' }, { class: 'form-control' } %>
   <% else %>
-    <%= link_to('Create new label', new_label_path) %>
+    <%= link_to 'Create new label', new_label_path %>
   <% end %>
 </div>

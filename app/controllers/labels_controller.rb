@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class LabelsController < ApplicationController
-  before_action :get_label, only: [:edit, :update, :destroy]
+  before_action :set_label, only: %i[edit update destroy]
 
   def index
     @labels = Label.all
@@ -36,16 +38,15 @@ class LabelsController < ApplicationController
 
   private
 
-  def get_label
+  def set_label
     @label = Label.find_by(id: params[:id])
 
-    if @label.blank?
-      redirect_to labels_path, notice: "Label #{params[:id]} was not found."
-    end
+    return if @label.present?
+
+    redirect_to labels_path, notice: "Label #{params[:id]} was not found."
   end
 
   def label_params
     params.require(:label).permit(:title)
   end
-
 end

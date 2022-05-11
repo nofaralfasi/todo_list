@@ -4,18 +4,17 @@ class Task < ApplicationRecord
 
   validates :title, presence: true, length: { minimum: 2 }
 
-  validate :is_future_datetime
+  validate :future_datetime?
 
   def print_due_date
-    self.due_date.strftime("%d/%m/%Y %I:%M %p")
+    due_date.strftime('%d/%m/%Y %I:%M %p')
   end
 
   private
 
-  def is_future_datetime
-    if due_date.to_i < Time.now.to_i
-      errors.add(:due_date, "cannot be in the past!")
-    end
-  end
+  def future_datetime?
+    return unless due_date.to_i < Time.now.to_i
 
+    errors.add(:due_date, 'cannot be in the past!')
+  end
 end
