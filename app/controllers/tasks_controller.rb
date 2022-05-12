@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class TasksController < ApplicationController
   before_action :set_list
   before_action :set_task, only: %i[show edit update destroy]
