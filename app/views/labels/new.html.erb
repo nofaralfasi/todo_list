@@ -1,25 +1,25 @@
-<div class="container">
+<div class='container'>
   <h1>New Label</h1>
 
-  <%= form_for(@label, :method => 'post', data: { turbo: false }) do |f| %>
+  <%= form_for @label, method: 'post', data: { turbo: false } do |f| %>
 
     <% @label.errors.full_messages_for(:title).each do |message| %>
       <div><%= message %></div>
     <% end %>
 
-    <div class="form-group">
+    <div class='form-group'>
     <table>
       <tr>
         <td>Title</td>
       </tr>
       <tr>
-        <td><%= f.text_field(:title) %></td>
+        <td><%= f.text_field :title %></td>
       </tr>
     </table>
     </div>
 
-    <div class="label-buttons">
-      <%= f.submit('Create Label', class: "btn btn-primary") %>
+    <div class='label-buttons'>
+      <%= f.submit 'Create Label', class: 'btn btn-primary' %>
     </div>
 
   <% end %>

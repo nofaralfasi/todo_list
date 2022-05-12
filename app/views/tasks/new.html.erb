@@ -1,11 +1,11 @@
-<div class="container">
+<div class='container'>
   <h1>New Task</h1>
 
-  <%= form_for([@task.list, @task], :method => 'post', data: { turbo: false }) do |f| %>
+  <%= form_for [@task.list, @task], method: 'post', data: { turbo: false } do |f| %>
 
-    <%= render(:partial => 'form', :locals => { :f => f }) %>
+    <%= render partial: 'form', locals: { f: f } %>
 
-    <%= f.submit('Create Task', class: "btn btn-primary") %>
+    <%= f.submit 'Create Task', class: 'btn btn-primary' %>
 
   <% end %>
 </div>

@@ -1,7 +1,7 @@
-<div class="container">
+<div class='container'>
   <h1><%= @task.title %></h1><br/>
 
-  <table class="table table-bordered">
+  <table class='table table-bordered'>
     <thead>
     <tr>
       <th>Due Date</th>
@@ -15,9 +15,8 @@
       <td><%= @task.print_due_date %></td>
       <td><%= @task.priority %></td>
       <td><%= task_status(@task) %></td>
-      <td><%= task_label(@task) %></td>
+      <td><%= task_label %></td>
     </tr>
     </tbody>
   </table>
 </div>
-

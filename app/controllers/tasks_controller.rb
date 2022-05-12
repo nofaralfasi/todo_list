@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
-  before_action :get_list
-  before_action :get_task, only: [:show, :edit, :update, :destroy]
-  before_action :get_labels, only: [:new, :edit]
+  before_action :set_list
+  before_action :set_task, only: %i[show edit update destroy]
+  before_action :set_labels, only: %i[new edit]
 
   def new
     @task = @list.tasks.build
@@ -13,7 +13,7 @@ class TasksController < ApplicationController
     if @task.save
       redirect_to @task.list, notice: "Task `#{@task.title}` was successfully created."
     else
-      get_labels
+      set_labels
       render :new, status: :unprocessable_entity
     end
   end
@@ -22,7 +22,7 @@ class TasksController < ApplicationController
     if @task.update(task_params)
       redirect_to @task.list, notice: "Task `#{@task.title}` was successfully updated."
     else
-      get_labels
+      set_labels
       render :edit, status: :unprocessable_entity
     end
   end
@@ -37,24 +37,24 @@ class TasksController < ApplicationController
 
   private
 
-  def get_labels
+  def set_labels
     @labels = Label.all
   end
 
-  def get_task
+  def set_task
     @task = Task.find_by(id: params[:id])
 
-    if @task.blank?
-      redirect_to @list, notice: "Task #{params[:id]} was not found."
-    end
+    return if @task.present?
+
+    redirect_to @list, notice: "Task #{params[:id]} was not found."
   end
 
-  def get_list
+  def set_list
     @list = List.find_by(id: params[:list_id])
 
-    if @list.blank?
-      redirect_to lists_path, notice: "List #{params[:list_id]} was not found."
-    end
+    return if @list.present?
+
+    redirect_to lists_path, notice: "List #{params[:list_id]} was not found."
   end
 
   def task_params

@@ -1,12 +1,12 @@
-<div class="container">
+<div class='container'>
   <h1>To-Do Lists:</h1><br/>
 
   <% if @lists.any? %>
-    <table class="table table-bordered">
+    <table class='table table-bordered'>
       <thead>
       <tr>
         <th>Title</th>
-        <th colspan="3">Action</th>
+        <th colspan='3'>Action</th>
       </tr>
       </thead>
       <tbody>
@@ -15,14 +15,14 @@
           <td><%= list.title %></td>
           <td><%= link_to 'Show', list_path(list) %></td>
           <td><%= link_to 'Edit', edit_list_path(list) %></td>
-          <td><%= link_to "Delete", list, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></td>
+          <td><%= link_to 'Delete', list, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
       </tbody>
     </table>
   <% end %>
 
-  <div class="my-2 my-lg-0">
+  <div class='my-2 my-lg-0'>
     <%= link_to 'Create new list', new_list_path, class: 'action new btn btn-outline-primary my-2 my-sm-0' %>
   </div>
 </div>

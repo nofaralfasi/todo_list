@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-  before_action :get_list, only: [:show, :edit, :update, :destroy]
+  before_action :set_list, only: %i[show edit update destroy]
 
   def index
     @lists = List.all
@@ -37,16 +37,15 @@ class ListsController < ApplicationController
 
   private
 
-  def get_list
+  def set_list
     @list = List.find_by(id: params[:id])
 
-    if @list.blank?
-      redirect_to lists_path, notice: "List #{params[:id]} was not found."
-    end
+    return if @list.present?
+
+    redirect_to lists_path, notice: "List #{params[:id]} was not found."
   end
 
   def list_params
     params.require(:list).permit(:title)
   end
-
 end
