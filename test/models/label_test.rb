@@ -16,7 +16,7 @@ class LabelTest < ActiveSupport::TestCase
 
   test 'invalid label without title' do
     @label.title = nil
-    refute @label.valid?, 'saved label without a title' #Fails if @label.valid? is a true value
+    refute @label.valid?, 'saved label without a title' # Fails if @label.valid? is a true value
     assert_not_nil @label.errors[:title], 'no validation error for title present'
   end
 
